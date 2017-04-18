@@ -6,6 +6,16 @@ if (!("plotly" %in% rownames(installed.packages()))) {
   print("Please run the code again after install the package")
   install.packages("plotly")
 }
+if (packageVersion("ggplot2") < "2.2.1") {
+  print("Please make sure that you have the newest version of ggplot2")
+  print("Please run the code again after install the package")
+  update.packages("ggplot2")
+}
+if (packageVersion("shiny") < "1.0.1") {
+  print("Please make sure that you have the newest version of shiny")
+  print("Please run the code again after install the package")
+  update.packages("shiny")
+}
 library("shiny")
 library("ggplot2")
 library("plotly")
@@ -43,7 +53,7 @@ ui <- fluidPage(
   mainPanel(
     plotlyOutput("plot"),
     sliderInput("year", label = NULL, min = 1960, max = 2014, value = 2014, 
-                animate = animationOptions(interval = 200, playButton = icon('play', "fa-2x"), pauseButton = icon('pause', "fa-2x")), 
+                animate = animationOptions(interval = 250, playButton = icon('play', "fa-2x"), pauseButton = icon('pause', "fa-2x")), 
                 ticks = FALSE, width = "100%")
   ),
   sidebarPanel(
